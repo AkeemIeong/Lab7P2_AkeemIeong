@@ -22,8 +22,8 @@ public class Producto {
     public Producto(int id, String name, int category, double price, int aisle, int bin) {
         this.id = id;
         this.name = name;
-        this.category = category;
-        this.price = price;
+        setCategory(category);
+        setPrice(price);
         this.aisle = aisle;
         this.bin = bin;
     }
@@ -49,7 +49,9 @@ public class Producto {
     }
 
     public void setCategory(int category) {
+        if(this.category>=0&&category<=9){
         this.category = category;
+        }
     }
 
     public double getPrice() {
@@ -57,7 +59,9 @@ public class Producto {
     }
 
     public void setPrice(double price) {
+        if(this.price>0){
         this.price = price;
+        }
     }
 
     public int getAisle() {

@@ -47,6 +47,7 @@ public class main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Exportar Datos");
+        jButton1.setEnabled(false);
 
         jButton2.setText("Actualizar Tabla");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,7 +187,8 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         File fichero = null;
+        jButton1.setEnabled(true);
+        File fichero = null;
         FileReader fr = null;
         BufferedReader br = null;
         
@@ -207,6 +209,10 @@ public class main extends javax.swing.JFrame {
                fr = new FileReader(fichero);
                br=new BufferedReader(fr);
                String linea;
+               while(  (linea=br.readLine()) !=null  ){                    
+                   String datos[]=linea.split(",");
+                   System.out.println(datos[1]);
+                }
                
             } //fin if
             
@@ -218,6 +224,8 @@ public class main extends javax.swing.JFrame {
             fr.close();
         } catch (IOException ex) {
         }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
