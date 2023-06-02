@@ -237,6 +237,7 @@ public class main extends javax.swing.JFrame {
         BufferedReader br = null;
         
         try {
+            DefaultTableModel modelo=new DefaultTableModel();
             JFileChooser jfc = new JFileChooser("./");
             FileNameExtensionFilter filtro = 
                     new FileNameExtensionFilter(
@@ -253,8 +254,9 @@ public class main extends javax.swing.JFrame {
                br=new BufferedReader(fr);
                String linea;
                while(  (linea=br.readLine()) !=null  ){                    
-                   //String datos[]=linea.split(",");
-                   
+                   String datos[]=linea.split(",");
+                   modelo.addColumn(datos);
+                   System.out.println(datos[1]);
                 }
                
             } //fin if
