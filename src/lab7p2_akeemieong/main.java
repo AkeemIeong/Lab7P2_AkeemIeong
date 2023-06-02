@@ -298,7 +298,10 @@ public class main extends javax.swing.JFrame {
                 bw = new BufferedWriter(fw);
                  for (int i = 0; i < jTable2.getRowCount(); i++) {
                      for (int j = 0; j < jTable2.getColumnCount(); j++) {
-                         bw.write((String)jTable2.getValueAt(i,j));
+                         if(j==0&&i>0){
+                             bw.write("\n");
+                         }
+                         bw.write((String)jTable2.getValueAt(i,j)+",");
                      }
                      
                  }
