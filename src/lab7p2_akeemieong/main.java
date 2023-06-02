@@ -70,34 +70,34 @@ public class main extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "name", "category", "aisle", "bin"
+                "ID", "name", "category", "price", "aisle", "bin"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -115,6 +115,7 @@ public class main extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -147,17 +148,14 @@ public class main extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "name", "category", "aisle", "bin"
+                "ID", "name", "category", "price", "aisle", "bin"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -171,6 +169,7 @@ public class main extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(2).setResizable(false);
             jTable2.getColumnModel().getColumn(3).setResizable(false);
             jTable2.getColumnModel().getColumn(4).setResizable(false);
+            jTable2.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jButton3.setText("Exportar Datos");
@@ -236,7 +235,7 @@ public class main extends javax.swing.JFrame {
         File fichero = null;
         FileReader fr = null;
         BufferedReader br = null;
-        DefaultTableModel modelo=new DefaultTableModel();
+        
         try {
             JFileChooser jfc = new JFileChooser("./");
             FileNameExtensionFilter filtro = 
@@ -248,16 +247,14 @@ public class main extends javax.swing.JFrame {
             jfc.setFileFilter(filtro);
             jfc.addChoosableFileFilter(filtro2);            
             int seleccion = jfc.showOpenDialog(this);
-            if (seleccion == JFileChooser.APPROVE_OPTION)
-            {
+            if (seleccion == JFileChooser.APPROVE_OPTION){
                fichero = jfc.getSelectedFile();
                fr = new FileReader(fichero);
                br=new BufferedReader(fr);
                String linea;
                while(  (linea=br.readLine()) !=null  ){                    
-                   String datos[]=linea.split(",");
-                   System.out.println(datos[1]);
-                   modelo.addColumn(datos);
+                   //String datos[]=linea.split(",");
+                   
                 }
                
             } //fin if
@@ -281,7 +278,7 @@ public class main extends javax.swing.JFrame {
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
          jfc.addChoosableFileFilter(filtro); 
-         ArrayList <String> coso=new ArrayList<>();
+         
         int seleccion = jfc.showSaveDialog(this);        
         FileWriter fw = null;
         BufferedWriter bw = null;
