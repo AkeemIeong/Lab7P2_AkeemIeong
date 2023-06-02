@@ -239,12 +239,8 @@ public class main extends javax.swing.JFrame {
         try {
             DefaultTableModel modelo=new DefaultTableModel();
             JFileChooser jfc = new JFileChooser("./");
-            FileNameExtensionFilter filtro = 
-                    new FileNameExtensionFilter(
-                            "Archivos de Texto", "txt");
-            FileNameExtensionFilter filtro2 = 
-                new FileNameExtensionFilter(
-                        "Imagenes", "jpg", "png", "bmp");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de Texto", "txt");
+            FileNameExtensionFilter filtro2 = new FileNameExtensionFilter("Imagenes", "jpg", "png", "bmp");
             jfc.setFileFilter(filtro);
             jfc.addChoosableFileFilter(filtro2);            
             int seleccion = jfc.showOpenDialog(this);
@@ -252,13 +248,15 @@ public class main extends javax.swing.JFrame {
                fichero = jfc.getSelectedFile();
                fr = new FileReader(fichero);
                br=new BufferedReader(fr);
-               String linea;
-               while(  (linea=br.readLine()) !=null  ){                    
-                   String datos[]=linea.split(",");
-                   modelo.addColumn(datos);
-                   System.out.println(datos[1]);
-                }
                
+               jTable1.getModel();
+               Object []linea=br.lines().toArray();
+                for (int i = 0; i < linea.length; i++) {
+                    String[]fila=linea[i].toString().split("\n");
+                    System.out.println(i+"-"+linea[i]);
+                    modelo.addColumn(fila);
+                }
+             
             } //fin if
             
         } catch (Exception e) {
